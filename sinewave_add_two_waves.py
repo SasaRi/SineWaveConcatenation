@@ -6,7 +6,8 @@ theta = 0
 t_start = 0
 t_end = 0.08
 fs = 13500
-time = np.arange(t_start, t_end, 1 / fs)
+nr_samples = int((t_end - t_start) * fs)
+time = np.linspace(t_start, t_end, num = nr_samples)
 
 def generate_sinewave(Amp : float = 1, freq : float = 50):
 
@@ -16,14 +17,19 @@ def generate_sinewave(Amp : float = 1, freq : float = 50):
 
 # test number 1; concatenate multiple sine waves with the same frequency
 # result: since the previous segment always end at the phase 0 and new one starts at the 0 too, there are no discontinuities in the resulting signal  
+Amp = 1
 freq_new = 25
 
 sinewave = generate_sinewave(freq = freq_new)
 
 for i in range(4):
-    sinewave = np.concatenate((sinewave, generate_sinewave(freq = freq_new)))
+    Amp += 1
+    sinewave = np.concatenate((sinewave, generate_sinewave(Amp = Amp, freq = freq_new)))
 
-fig.Figure()
+fig = plt.Figure()
+plt.title("Adding multiple sinusoids with const. frequency of 25 Hz")
+plt.xlabel("Number of samples")
+plt.ylabel("Amplitude")
 plt.plot(sinewave)
 plt.grid()
 plt.show()
@@ -42,7 +48,10 @@ for i in range(4):
     Amp += 1
     sinewave = np.concatenate((sinewave, generate_sinewave(Amp = Amp, freq = freq_new)))
 
-fig.Figure()
+fig = plt.Figure()
+plt.title("Adding multiple sinusoids where frequency is incremented by 10 and amplitude by 1")
+plt.xlabel("Number of samples")
+plt.ylabel("Amplitude")
 plt.plot(sinewave)
 plt.grid()
 plt.show()

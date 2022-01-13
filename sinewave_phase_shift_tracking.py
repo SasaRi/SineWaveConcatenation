@@ -37,7 +37,10 @@ for i in range(4):
     freq_new += 10
     sinewave = np.concatenate((sinewave, generate_sinewave(freq = freq_new)))
 
-fig.Figure()
+fig = plt.Figure()
+plt.title("Adding multiple sinusoids where frequency is incremented by 10")
+plt.xlabel("Number of samples")
+plt.ylabel("Amplitude")
 plt.plot(sinewave)
 plt.grid()
 plt.show()
