@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.figure as fig
 
 theta = 0
 t_start = 0

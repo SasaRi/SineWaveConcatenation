@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.figure as fig
 import math
 import logging
 
@@ -27,7 +26,7 @@ def generate_sinewave(Amp : float = 1, freq : float = 50):
 
     theta = phase_angle_start_next_wave_normalized
 
-    return sinewave
+    return sinewave[:-1]
 
 freq_new = 25
 
@@ -37,7 +36,6 @@ for i in range(4):
     freq_new += 10
     sinewave = np.concatenate((sinewave, generate_sinewave(freq = freq_new)))
 
-fig = plt.Figure()
 plt.title("Adding multiple sinusoids where frequency is incremented by 10")
 plt.xlabel("Number of samples")
 plt.ylabel("Amplitude")

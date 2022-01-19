@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import matplotlib.figure as fig
 
 t_start = 0
 t_end = 0.08
