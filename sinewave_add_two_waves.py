@@ -25,11 +25,15 @@ for i in range(4):
     Amp += 1
     sinewave = np.concatenate((sinewave, generate_sinewave(Amp = Amp, freq = freq_new)))
 
-fig = plt.Figure()
 plt.title("Adding multiple sinusoids with const. frequency of 25 Hz")
 plt.xlabel("Number of samples")
 plt.ylabel("Amplitude")
 plt.plot(sinewave)
+plt.grid()
+plt.show()
+
+sinewave_diff = np.gradient(sinewave)
+plt.plot(sinewave_diff)
 plt.grid()
 plt.show()
 
@@ -47,7 +51,6 @@ for i in range(4):
     Amp += 1
     sinewave = np.concatenate((sinewave, generate_sinewave(Amp = Amp, freq = freq_new)))
 
-fig = plt.Figure()
 plt.title("Adding multiple sinusoids where frequency is incremented by 10 and amplitude by 1")
 plt.xlabel("Number of samples")
 plt.ylabel("Amplitude")
