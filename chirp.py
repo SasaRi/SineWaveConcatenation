@@ -37,7 +37,7 @@ def chirp_generator(Amp = 1, start_frequency = 1, end_frequency = 1, transition_
     return chirp[:-1]
 
 # chiro = chirp(time, f0=start_freq, t1=3*(t_end-t_start)/2, f1=end_freq, method="linear")
-# plt.plot(chirp)
+# plt.plot(chiro)
 # plt.title("Chirp signal")
 # plt.xlabel("Number of samples")
 # plt.grid()
