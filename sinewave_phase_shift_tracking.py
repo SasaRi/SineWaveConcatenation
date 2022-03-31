@@ -42,3 +42,12 @@ plt.ylabel("Amplitude")
 plt.plot(sinewave)
 plt.grid()
 plt.show()
+
+sinewave_diff = np.gradient(sinewave)
+
+plt.title("1st derivative")
+plt.xlabel("Number of samples")
+plt.ylabel("Amplitude of 1st derivative")
+plt.plot(sinewave)
+plt.grid()
+plt.show()

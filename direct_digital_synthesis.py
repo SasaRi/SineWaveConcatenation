@@ -23,16 +23,21 @@ def initialize_LUT(Amplitude = 1, freq = 1, initial_phase_shift = 0):
 LUT = initialize_LUT(Amplitude=Amp_base, freq=freq_base)
 
 # calculate phase shift increment
-frequency = 1
+frequency = 10
 phase_increment = 2 * math.pi / (nr_samples / frequency)
 
 phase_base = 2 * math.pi / nr_samples
 phase_acc = 0
 output = []
+is_frequency_changed = 0
+
 for i in range(range_for_loop):
-    if i == range_for_loop / 2:
-        frequency += 30
-        phase_increment = 2 * math.pi / (nr_samples / frequency)
+    if i > range_for_loop / 2 and is_frequency_changed == 0:
+        if output[-1] - output[-2] < 0.0004:
+            frequency += 10
+            is_frequency_changed = 1
+            phase_increment = 2 * math.pi / (nr_samples / frequency)
+            logger.warning("phase value before generating the new chunk: %.2f [deg]\n", phase_acc * 180 / math.pi)
     
     index = round(phase_acc / phase_base)
     if index == nr_samples:
