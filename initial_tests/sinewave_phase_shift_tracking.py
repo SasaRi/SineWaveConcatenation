@@ -12,6 +12,7 @@ fs = 13500
 nr_samples = int((t_end - t_start) * fs)
 time = np.linspace(t_start, t_end, num = nr_samples)
 
+# phase shift tracking example, fi2 = 2 * pi * f + fi1
 def generate_sinewave(Amp : float = 1, freq : float = 50):
 
     global theta

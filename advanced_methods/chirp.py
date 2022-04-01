@@ -12,8 +12,8 @@ fs = 23500
 nr_samples = int((t_end - t_start) * fs)
 time = np.linspace(t_start, t_end, num = nr_samples)
 
-start_freq = 2.5
-end_freq = 10
+start_freq = 1
+end_freq = 50
 theta = 0
 
 # implement chirp signal without using the library
@@ -29,7 +29,7 @@ def chirp_generator(Amp = 1, start_frequency = 1, end_frequency = 1, transition_
     phase_angle_start_next_wave_normalized = math.fmod(phase_angle_start_next_wave, 2 * math.pi)
     theta = phase_angle_start_next_wave_normalized
 
-    slope = chirp[-2] - chirp[-1]
+    # slope = chirp[-2] - chirp[-1]
 
     # logger.warning("end phase: %.5f [deg], slope: %.5f\n", theta * 180 / math.pi, slope)
     # logger.warning("number of samples: %d\n")

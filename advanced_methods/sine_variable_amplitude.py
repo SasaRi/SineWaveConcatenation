@@ -8,8 +8,8 @@ fs = 13500
 freq = 25
 nr_samples = int((t_end - t_start) * fs)
 
-STARTING_AMPLITUDE = 1 # Hz
-ENDING_AMPLITUDE = 100 # Hz
+STARTING_AMPLITUDE = 1 
+ENDING_AMPLITUDE = 100 
 
 initial_Amplitude = STARTING_AMPLITUDE
 

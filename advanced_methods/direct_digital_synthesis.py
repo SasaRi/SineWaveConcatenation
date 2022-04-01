@@ -40,6 +40,7 @@ for i in range(range_for_loop):
             logger.warning("phase value before generating the new chunk: %.2f [deg]\n", phase_acc * 180 / math.pi)
     
     index = round(phase_acc / phase_base)
+    # logger.warning("index: %.d\n", index)
     if index == nr_samples:
         index = 0
     output.append(LUT[index])
