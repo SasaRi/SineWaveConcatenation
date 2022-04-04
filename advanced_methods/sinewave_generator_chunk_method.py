@@ -42,8 +42,8 @@ def sinewave_generator(Amp_start, Amp_final = 1, Freq_start = 1, Freq_end = 1, t
 # main application
 AMPLITUDE_0 = 1
 AMPLITUDE_1 = 10
-FREQUENCY_0 = 1
-FREQUENCY_1 = 10
+FREQUENCY_0 = 10
+FREQUENCY_1 = 20
 
 # 1st chunk (sinewave)
 sinewave = sinewave_generator(Amp_start=AMPLITUDE_0, Amp_final=AMPLITUDE_0, Freq_start=FREQUENCY_0, Freq_end=FREQUENCY_0, transition_time=1/FREQUENCY_0)
