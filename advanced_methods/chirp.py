@@ -1,3 +1,11 @@
+"""
+This test will concatenate 3 sine waves, where the 1st chunk (sine wave) will have fixed frequency.
+Second chunk will have a variable frequency from start till end. Last 3rd chunk is generated with fixed end frequency.
+Base block of this test is a chirp signal that is implemented without using the library. Frequency is changed as a fcuntion of time,
+while Amplitude is fixed the whole time. 
+In order to avoid disconitnuities in the sine wave, phase tracking algorithm is implemented.  
+"""
+
 import numpy as np 
 import matplotlib.pyplot as plt
 from scipy.signal import chirp
@@ -16,7 +24,6 @@ start_freq = 1
 end_freq = 50
 theta = 0
 
-# implement chirp signal without using the library
 def chirp_generator(Amp = 1, start_frequency = 1, end_frequency = 1, transition_time = 1):
 
     global theta
@@ -29,19 +36,10 @@ def chirp_generator(Amp = 1, start_frequency = 1, end_frequency = 1, transition_
     phase_angle_start_next_wave_normalized = math.fmod(phase_angle_start_next_wave, 2 * math.pi)
     theta = phase_angle_start_next_wave_normalized
 
-    # slope = chirp[-2] - chirp[-1]
-
     # logger.warning("end phase: %.5f [deg], slope: %.5f\n", theta * 180 / math.pi, slope)
     # logger.warning("number of samples: %d\n")
 
     return chirp[:-1]
-
-# chiro = chirp(time, f0=start_freq, t1=3*(t_end-t_start)/2, f1=end_freq, method="linear")
-# plt.plot(chiro)
-# plt.title("Chirp signal")
-# plt.xlabel("Number of samples")
-# plt.grid()
-# plt.show()
 
 # 1st segment
 t_end = 1 / start_freq
@@ -55,14 +53,14 @@ t_end = 1 / end_freq
 chirp = np.concatenate((chirp, chirp_generator(start_frequency=end_freq, end_frequency=end_freq, transition_time=t_end)))
 
 plt.plot(chirp)
-plt.title("Chirp signal")
+plt.title("Sine wave with starting frequency " + str(start_freq) + " Hz and end frequency " + str(end_freq) + " Hz")
 plt.xlabel("Number of samples")
 plt.grid()
 plt.show()
 
 chirp_diff = np.gradient(chirp)
 plt.plot(chirp_diff)
-plt.title("Chirp signal, 1st derivative")
+plt.title("1st derivative of the Sine wave with starting frequency " + str(start_freq) + " Hz and end frequency " + str(end_freq) + " Hz")
 plt.xlabel("Number of samples")
 plt.grid()
 plt.show()
